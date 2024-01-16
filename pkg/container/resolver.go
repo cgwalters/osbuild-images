@@ -59,6 +59,7 @@ func (r *Resolver) Add(spec SourceSpec) {
 		if err != nil {
 			err = fmt.Errorf("'%s': %w", spec.Source, err)
 		}
+		fmt.Printf("Resolved %v\n", spec)
 		r.queue <- resolveResult{spec: spec, err: err}
 	}()
 }
