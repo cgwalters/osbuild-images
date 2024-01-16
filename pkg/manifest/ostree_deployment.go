@@ -98,6 +98,7 @@ func NewOSTreeContainerDeployment(buildPipeline Build,
 	osName string,
 	platform platform.Platform) *OSTreeDeployment {
 
+	fmt.Printf("using container %v", container)
 	p := &OSTreeDeployment{
 		Base:            NewBase("ostree-deployment", buildPipeline),
 		containerSource: container,

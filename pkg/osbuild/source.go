@@ -3,6 +3,7 @@ package osbuild
 import (
 	"encoding/json"
 	"errors"
+	"fmt"
 
 	"github.com/osbuild/images/pkg/container"
 	"github.com/osbuild/images/pkg/ostree"
@@ -95,6 +96,7 @@ func GenSources(packages []rpmmd.PackageSpec, ostreeCommits []ostree.CommitSpec,
 		skopeo := NewSkopeoSource()
 		skopeoIndex := NewSkopeoIndexSource()
 		for _, c := range containers {
+			fmt.Printf("adding skopeo container %v", c)
 			skopeo.AddItem(c.Source, c.Digest, c.ImageID, c.TLSVerify, c.ContainersTransport, c.StoragePath)
 
 			// if we have a list digest, add a skopeo-index source as well
